@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 EXCLUDED = ['*.tests', '*.tests.*', 'tests.*', 'tests']
 
-setup(name         ='marytts',
+setup(name         ='py-marytts',
       version      ='0.1.0',
       description  ='Python interface for Mary TTS',
       classifiers  = [
@@ -12,6 +12,10 @@ setup(name         ='marytts',
                       'Topic :: Multimedia :: Sound/Audio :: Speech',
                       'Operating System :: POSIX :: Linux',
                       'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
+                      'Programming Language :: Python :: 2',
+                      'Programming Language :: Python :: 2.7',
+                      'Programming Language :: Python :: 3',
+                      'Programming Language :: Python :: 3.4',
                      ],
       platforms    = 'Linux',
       license      = 'LGPLv3',
