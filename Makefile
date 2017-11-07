@@ -1,4 +1,4 @@
-all:	README.html README.md
+all:	README.html README.md dist
 
 .PHONY:	tests clean dist upload
 
@@ -21,5 +21,4 @@ upload:
 
 clean:
 	rm -f *.html *.png README 
-	rm -rf dist marytts.egg-info build
-
+	rm -rf dist build py_marytts.egg-info  README.md  README.xml
