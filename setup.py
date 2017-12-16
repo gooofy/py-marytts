@@ -2,10 +2,8 @@
 
 from setuptools import setup, find_packages
 
-EXCLUDED = ['*.tests', '*.tests.*', 'tests.*', 'tests']
-
 setup(name                 ='py-marytts',
-      version              ='0.1.1',
+      version              ='0.1.2',
       description          ='Python interface for Mary TTS',
       long_description     = open('README.md').read(),
       author               = 'Guenter Bartsch',
@@ -26,7 +24,6 @@ setup(name                 ='py-marytts',
       platforms            = 'Linux',
       license              = 'LGPLv3',
       package_dir          = {'marytts': 'marytts'},
-      test_suite           = 'tests',
-      packages             = find_packages('.', EXCLUDED),
+      packages             = ['marytts']
       )
 
