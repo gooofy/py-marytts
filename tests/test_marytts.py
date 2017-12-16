@@ -20,7 +20,7 @@
 
 import unittest
 import logging
-import StringIO
+from io import StringIO, BytesIO
 import wave
 
 from marytts import MaryTTS
@@ -50,7 +50,7 @@ class TestMaryTTS (unittest.TestCase):
 
         mtts = MaryTTS(voice='cmu-rms-hsmm', locale='en_US')
         wavs = mtts.synth_wav('Hello World!')
-        wav = wave.open(StringIO.StringIO(wavs))
+        wav = wave.open(BytesIO(wavs))
         
         self.assertEqual   (wav.getnchannels(),     1)
         self.assertEqual   (wav.getframerate(), 16000)
@@ -60,7 +60,7 @@ class TestMaryTTS (unittest.TestCase):
 
         mtts = MaryTTS(voice='bits3', locale='de')
         wavs = mtts.synth_wav('Hallo Welt!')
-        wav = wave.open(StringIO.StringIO(wavs))
+        wav = wave.open(BytesIO(wavs))
         
         self.assertEqual   (wav.getnchannels(),     1)
         self.assertEqual   (wav.getframerate(), 16000)
@@ -70,7 +70,7 @@ class TestMaryTTS (unittest.TestCase):
 
         mtts = MaryTTS()
         wavs = mtts.synth_wav("' AI N - g { n dZ", fmt='xs')
-        wav = wave.open(StringIO.StringIO(wavs))
+        wav = wave.open(BytesIO(wavs))
         
         self.assertEqual   (wav.getnchannels(),     1)
         self.assertEqual   (wav.getframerate(), 16000)

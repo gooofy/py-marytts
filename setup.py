@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name                 ='py-marytts',
-      version              ='0.1.2',
+      version              ='0.1.3',
       description          ='Python interface for Mary TTS',
       long_description     = open('README.md').read(),
       author               = 'Guenter Bartsch',

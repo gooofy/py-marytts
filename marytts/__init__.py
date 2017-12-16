@@ -24,12 +24,24 @@
 # based on Code from Hugh Sasse (maryclient-http.py)
 #
 
-import httplib, urllib
-
 import sys
 import re 
 import traceback
 import logging
+
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
+
+try:
+    from urllib.parse import urlparse, urlencode
+    from urllib.request import urlopen, Request
+    from urllib.error import HTTPError
+except ImportError:
+    from urlparse import urlparse
+    from urllib import urlencode
+    from urllib2 import urlopen, Request, HTTPError
 
 import xml.etree.ElementTree as ET
 
@@ -81,7 +93,7 @@ class MaryTTS(object):
                       "AUDIO"       : self.audio,
                       "VOICE"       : self._voice,
                       }
-        params = urllib.urlencode(raw_params)
+        params = urlencode(raw_params)
         headers = {}
 
         logging.debug('maryclient: generate, raw_params=%s' % repr(raw_params))
@@ -157,7 +169,7 @@ class MaryTTS(object):
     def voices(self):
 
         raw_params = { }
-        params = urllib.urlencode(raw_params)
+        params = urlencode(raw_params)
         headers = {}
 
         logging.debug('maryclient: voices, raw_params=%s' % repr(raw_params))
@@ -172,7 +184,7 @@ class MaryTTS(object):
         if response.status != 200:
             logging.error(response.getheaders())
             raise Exception ("{0}: {1}".format(response.status, response.reason))
-        res = response.read()
+        res = response.read().decode('utf8')
 
         voices = []
         for line in res.split('\n'):
